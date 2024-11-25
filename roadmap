@@ -1,0 +1,38 @@
+Project name: so_long
+Goal: 
+Create a 2d game based on minilibx, you'll play a daulphin that need to escape earth after eating fish.
+(I can use whatever I want in place of the daulphin fish etc). The project should contain a Makefile
+
+Game part:
+
+- Maps extension need to be in .ber
+- The player needs to collect all items then escape
+- The player must be able to use W A S D to move in the scene
+- 4 Directions up down left right
+- Player must not be able to noclip in walls
+- The movement count must be printed in the shell terminal
+- 2d view
+- Feel free to use whatever you want as the daulphin etc
+
+Graphical part:
+
+- Program must show image in a window
+- The window must stay fluid what ever happen
+- ESC key should close properly the window and escape the program
+- Use minilibx images
+
+The map:
+
+- Must contain walls, collectibles, empty space
+- Map file is composed of 5 characters: 0 empty space ; 1 walls ; C collectibles ; E the escape ; P player
+exemple: 111111111111111
+		 100000000000001
+		 100000C00000001
+		 100P00000000001
+		 111111111111111
+- The map need to have 1 escape, atleast 1 item and a starting point
+- Rectangular map
+- Map should be closed by walls, program should stop and print an error message if not
+- You should verify if a valid path to the escape exist, if not error
+- You should parse every map file till it respect the rules
+- If there is a configuration error the program should quit properly and return "Error\n" followed by and explicit message
