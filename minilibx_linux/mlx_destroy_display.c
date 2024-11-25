@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 15:05:33 by lucius            #+#    #+#             */
-/*   Updated: 2024/11/12 13:41:06 by luluzuri         ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mlx_int.h"
 
-char	*ft_strdup(const char *s)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	char	*sub;
-
-	sub = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!sub)
-		return (sub);
-	ft_strlcpy(sub, s, ft_strlen(s) + 1);
-	return (sub);
+	XCloseDisplay(xvar->display);
 }

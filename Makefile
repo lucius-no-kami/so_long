@@ -1,41 +1,74 @@
-# Nom de l'exécutable
+#--------- SO_LONG ---------#
+
 NAME = so_long
 
-# Compilateur et options de compilation
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+#---------- DIR ------------#
 
-# Chemins vers les bibliothèques
-MLX_DIR = mlx_linux
-LIBFT_DIR = libft
+SRC_DIR = src
 OBJ_DIR = obj
+INC_DIR	= include
 
-# Fichiers sources et objets
-SRCS = main.c
-OBJS = $(SRCS:.c=.o)
+#---------- SRC ------------#
 
-# Bibliothèques à lier
-LIBS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lm -lX11 -lXext
+SRC = main.c
 
-# Règle par défaut
-all: $(NAME)
+#---------- OBJ ------------#
 
-# Règle pour créer l'exécutable
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJ_DIR)/$^ $(LIBS)
+OBJ = $(SRC:.c=.o)
+SRC := $(addprefix $(SRC_DIR)/, $(SRC))
+OBJ := $(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(OBJ)) # Permet de remplacer le src/ devant l'objet par obj/ (src/ se met car il transforme les fichiers sources src/name.c en src/name.o)
 
-# Règle pour compiler les fichiers .c en fichiers .o
-%.o: %.c
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(MLX_DIR) -c -o $(OBJ_DIR)/$@ $<
-	$(info CREATED $@)
+#--------- LIBFT -----------#
 
-# Règle pour nettoyer les fichiers objets
+LIBFT_DIR 	= libft
+LIBFT		= $(LIBFT_DIR)/libft.a
+
+#---------- MLX ------------#
+
+MLX_DIR	= minilibx_linux
+MLX		= $(MLX_DIR)/libmlx.a
+
+#------- LIB FLAGS ---------#
+
+LBFLAGS	= -L$(MLX_DIR) -L$(LIBFT_DIR)
+LIBS	= $(MLX) $(LIBFT)
+
+#------ COMP & FLAGS -------#
+
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror -I$(INC_DIR) -g3 -I$(MLX_DIR) -I/user/include/X11 -I$(LIBFT_DIR)
+MLX_FLAGS	= -lXext -lX11 -lm -lz
+
+#---------- RULES ----------#
+
+all: $(MLX_DIR) $(LIBFT_DIR) $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(LBFLAGS) $(OBJ) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+
+# Permet de creer le repertoire pour les obj
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT):
+	@$(MAKE) --silent -C $(LIBFT_DIR)
+	$(info CREATED $(LIBFT))
+
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
+
 clean:
-	$(RM) $(OBJ_DIR)/$(OBJS)
+	rm -rf $(OBJ_DIR)
 
-# Règle pour nettoyer les fichiers objets et l'exécutable
 fclean: clean
-	$(RM) $(NAME)
+	rm -rf $(NAME)
+	@$(MAKE) --silent -C $(LIBFT_DIR) fclean
+	@$(MAKE) --silent -C $(MLX_DIR) clean
 
-# Règle pour recompiler tout
 re: fclean all
+
+.PHONY: all clean fclean re

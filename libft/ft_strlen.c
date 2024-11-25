@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 09:10:22 by lucius            #+#    #+#             */
-/*   Updated: 2024/11/25 09:40:11 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:41:20 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	const char	*move = s;
+	size_t	i;
 
-	while (*move)
-		move++;
-	return (move - s);
+	i = 0;
+	while (*s++)
+		i++;
+	return (i);
 }

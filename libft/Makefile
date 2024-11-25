@@ -24,7 +24,7 @@ SRCS		=	ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 				ft_itoa.c    ft_strmapi.c ft_striteri.c \
 				ft_putchar_fd.c ft_putstr_fd.c \
 				ft_putendl_fd.c ft_putnbr_fd.c \
-				ft_printf.c pf_utils.c get_next_line.c
+				ft_printf.c pf_utils.c
 
 OBJS		= 	ft_isalpha.o ft_isdigit.o ft_isalnum.o \
 				ft_isascii.o ft_isprint.o ft_strlen.o  \
@@ -38,7 +38,7 @@ OBJS		= 	ft_isalpha.o ft_isdigit.o ft_isalnum.o \
 				ft_itoa.o    ft_strmapi.o ft_striteri.o \
 				ft_putchar_fd.o ft_putstr_fd.o \
 				ft_putendl_fd.o ft_putnbr_fd.o \
-				ft_printf.o	pf_utils.o get_next_line.o 
+				ft_printf.o pf_utils.o
 
 cc			= gcc
 CFLAGS		= -Wall -Wextra -Werror
@@ -63,12 +63,10 @@ RM = rm -rf
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-	$(info CREATED $(NAME))
+	@ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -fPIC -c -o $@ $<
-	$(info CREATED $@)
+	@$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	$(RM) $(OBJS)

@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 15:05:33 by lucius            #+#    #+#             */
-/*   Updated: 2024/11/12 13:41:06 by luluzuri         ###   ########.fr       */
+/*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
+/*   Updated: 2024/11/25 15:21:02 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-char	*ft_strdup(const char *s)
-{
-	char	*sub;
+# include "../libft/libft.h"
+# include "../minilibx_linux/mlx.h"
 
-	sub = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!sub)
-		return (sub);
-	ft_strlcpy(sub, s, ft_strlen(s) + 1);
-	return (sub);
-}
+#endif /* SO_LONG_H */
