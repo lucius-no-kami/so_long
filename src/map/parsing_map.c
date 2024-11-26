@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:03:48 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/26 10:15:14 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:08:31 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,38 @@ int	check_map_validity(char **map)
 	// 3. Check if there is wall all over the rectangle
 }
 
-char	**read_file(char *map_name)
+void	fill_2dtab(int fd, char **tab, int numLines)
 {
-	int	fd;
-	char	buffer[10];
+	tab = (char **)malloc((numLines + 1) * sizeof(char *));
+	if (!tab)
+	{
+		ft_printf("Error\nCoudn't not malloc. (fill_2dtab: line 29)");
+		exit(EXIT_FAILURE);
+	}
+}
+
+char	**read_file(char *map_name, char **tab)
+{
+	char	*line;
+	int		fd;
+	int		count;
+
+	line = "";
+	fd = open(map_name, O_RDONLY);
+	count = 0;
+	if (fd == -1)
+	{
+		ft_printf("Error\nCouldn't open map file.");
+		return (NULL);
+	}
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		count++;
+		free(line);
+	}
+	fill_2dtab(fd, tab, count);
+	return (tab);
 }
 
 char	**parsing_map(char *map_name)

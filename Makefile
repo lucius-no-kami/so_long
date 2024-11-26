@@ -10,7 +10,7 @@ INC_DIR	= include
 
 #---------- SRC ------------#
 
-SRC = main.c
+SRC = main.c so_long.c
 
 #---------- OBJ ------------#
 
