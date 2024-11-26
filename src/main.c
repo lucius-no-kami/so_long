@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:02:35 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/25 15:25:47 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:34:24 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int	main(int ac, char **av)
 		map_file);
 		return (1);
 	}
+	so_long(map_file);
 	return (0);
 }

@@ -6,14 +6,23 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/25 15:21:02 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:33:49 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../libft/libft.h"
-# include "../minilibx_linux/mlx.h"
+# define EMPTY_SPACE 0
+# define WALLS 1
+# define COLLECTIBLE 'C'
+# define ESCAPE 'E'
+# define SPAWN 'P'
+
+# include <libft.h>
+# include <mlx.h>
+
+void	so_long(char *map_name);
+char	**parsing_map(char *map_name);
 
 #endif /* SO_LONG_H */

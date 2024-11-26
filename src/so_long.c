@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/10 15:05:33 by lucius            #+#    #+#             */
-/*   Updated: 2024/11/26 10:40:47 by luluzuri         ###   ########.fr       */
+/*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
+/*   Updated: 2024/11/26 09:03:30 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long.h"
 
-char	*ft_strdup(const char *s)
+void	so_long(char *map_name)
 {
-	char	*sub;
-
-	sub = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	if (!sub)
-		return (sub);
-	ft_strlcpy(sub, s, ft_strlen(s) + 1);
-	return (sub);
+	// 1. Parser the map and check if it's valid
+	// 2. Create mlx window etc
+	// 3. print the map on the window
+	// 4. make it all playable
 }
