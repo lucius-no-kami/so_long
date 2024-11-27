@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/26 11:10:24 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:49:52 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <mlx.h>
 
 void	so_long(char *map_name);
-//char	**parsing_map(char *map_name);
+char	**parsing_map(char *map_name);
+void	free_tab(char **tab, int numLines);
 
 #endif /* SO_LONG_H */

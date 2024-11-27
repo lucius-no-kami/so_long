@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:02:35 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/26 09:34:24 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:53:25 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 	map_file = av[1];
 	if (!ft_strnstr(map_file, ".ber", ft_strlen(map_file)))
 	{
-		ft_printf("Error: map file should finish by .ber, yours: %s.\n", \
+		ft_printf("Error\nmap file should finish by .ber, yours: %s.\n", \
 		map_file);
 		return (1);
 	}

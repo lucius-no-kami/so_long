@@ -68,7 +68,7 @@ $(NAME): $(OBJS)
 	@ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) -c -o $@ $< -g3
 
 clean:
 	$(RM) $(OBJS)

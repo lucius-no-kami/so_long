@@ -6,32 +6,65 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:03:48 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/26 11:08:31 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:49:47 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	check_valid_path(char **map)
+void	free_tab(char **tab, int numLines)
 {
-	// 1. checker if there is a path to the escape
+	while (tab[numLines])
+	{
+		if (tab[numLines] != NULL)
+			free(tab[numLines]);
+		numLines--;
+	}
+	free(tab);
+	exit(EXIT_FAILURE);
 }
 
-int	check_map_validity(char **map)
+int	count_line(char *map_file)
 {
-	// 1. if there is only EMPTY_SPACE WALLS COLLECTIBLES ESCAPE SPAWN
-	// 2. check if the map is rectangular
-	// 3. Check if there is wall all over the rectangle
+	int	fd;
+	int	count;
+
+	count = 0;
+	fd = open(map_file, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_printf("Error\nIn count_line , couldn't open the file.");
+		exit(EXIT_FAILURE);
+	}
+	while (get_next_line(fd))
+		count++;
+	close(fd);
+	return (count);
 }
 
-void	fill_2dtab(int fd, char **tab, int numLines)
+char	**get_map(int fd, char **tab, int numLines)
 {
+	int	i;
+
+	i = 0;
 	tab = (char **)malloc((numLines + 1) * sizeof(char *));
 	if (!tab)
 	{
 		ft_printf("Error\nCoudn't not malloc. (fill_2dtab: line 29)");
 		exit(EXIT_FAILURE);
 	}
+	while (i < numLines)
+	{
+		tab[i] = get_next_line(fd);
+		if (tab[i] == NULL)
+		{
+			ft_printf("Error\nCouldn't fill the 2d tab.");
+			free_tab(tab, i);
+		}
+		i++;
+	}
+	tab[numLines] = 0;
+	return (tab);
 }
 
 char	**read_file(char *map_name, char **tab)
@@ -41,27 +74,36 @@ char	**read_file(char *map_name, char **tab)
 	int		count;
 
 	line = "";
+	count = count_line(map_name);
+	if (count <= 0)
+	{
+		ft_printf("Error\nMap file is empty.");
+		exit(EXIT_FAILURE);
+	}
 	fd = open(map_name, O_RDONLY);
-	count = 0;
 	if (fd == -1)
 	{
 		ft_printf("Error\nCouldn't open map file.");
-		return (NULL);
+		exit(EXIT_FAILURE);
 	}
-	while (line != NULL)
-	{
-		line = get_next_line(fd);
-		count++;
-		free(line);
-	}
-	fill_2dtab(fd, tab, count);
+	ft_printf("count value: %d\n", count);
+	tab = get_map(fd, tab, count);
+	close(fd);
 	return (tab);
 }
 
 char	**parsing_map(char *map_name)
 {
-	// 0. call a function to get the map into a 2d char tab
-	// 1. check if char in the map are valid
-	// 2. call a function to check map_validity
-	// 3. call a function to check valid path
+	char	**tab;
+	int		i;
+
+	i = 0;
+	tab = NULL;
+	tab = read_file(map_name, tab);
+	while (tab[i])
+	{
+		ft_printf("line %d: %s\n", i, tab[i]);
+		i++;
+	}
+	return (tab);
 }
