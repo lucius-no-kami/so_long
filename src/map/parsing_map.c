@@ -6,13 +6,13 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:03:48 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/29 11:47:24 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:41:28 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	free_tab(char **tab)
+void	free_tab(char **tab, int exit_status)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	free_tab(char **tab)
 		i++;
 	}
 	free(tab);
-	exit(EXIT_FAILURE);
+	exit(exit_status);
 }
 
 static int	count_line(char *map_file)
@@ -48,9 +48,10 @@ static int	count_line(char *map_file)
 	return (count);
 }
 
-static char	**get_map(int fd, char **tab, int numLines)
+static char	**get_map(int fd, int numLines)
 {
-	int	i;
+	char	**tab;
+	int		i;
 
 	i = 0;
 	tab = (char **)malloc((numLines + 1) * sizeof(char *));
@@ -65,7 +66,7 @@ static char	**get_map(int fd, char **tab, int numLines)
 		if (tab[i] == NULL)
 		{
 			ft_printf("Error\nCouldn't fill the 2d tab.");
-			free_tab(tab);
+			free_tab(tab, EXIT_FAILURE);
 		}
 		i++;
 	}
@@ -73,13 +74,12 @@ static char	**get_map(int fd, char **tab, int numLines)
 	return (tab);
 }
 
-static char	**read_file(char *map_name, char **tab)
+char	**parsing_map(char *map_name)
 {
-	char	*line;
+	char	**tab;
 	int		fd;
 	int		count;
 
-	line = "";
 	count = count_line(map_name);
 	if (count <= 0)
 	{
@@ -92,24 +92,8 @@ static char	**read_file(char *map_name, char **tab)
 		ft_printf("Error\nCouldn't open map file.");
 		exit(EXIT_FAILURE);
 	}
-	ft_printf("count value: %d\n", count);
-	tab = get_map(fd, tab, count);
+	//ft_printf("count value: %d\n", count);
+	tab = get_map(fd, count);
 	close(fd);
-	return (tab);
-}
-
-char	**parsing_map(char *map_name	)
-{
-	char	**tab;
-	int		i;
-
-	i = 0;
-	tab = NULL;
-	tab = read_file(map_name, tab);
-	while (tab[i])
-	{
-		ft_printf("line %d: %s\n", i, tab[i]);
-		i++;
-	}
 	return (tab);
 }

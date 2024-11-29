@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:02:35 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/27 13:53:25 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:43:18 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	char	*map_file;
+	char	**map;
 
 	if (ac != 2)
 	{
@@ -28,6 +29,6 @@ int	main(int ac, char **av)
 		map_file);
 		return (1);
 	}
-	so_long(map_file);
-	return (0);
+	map = so_long(map_file);
+	free_tab(map, EXIT_SUCCESS);
 }

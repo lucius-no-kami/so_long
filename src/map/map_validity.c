@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:55:00 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/29 12:24:50 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:41:59 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 static void	exit_function(char **map, char *msg)
 {
 	ft_printf("Error\n%s", msg);
-	free_tab(map);
+	free_tab(map, EXIT_FAILURE);
 	exit(EXIT_FAILURE);
 }
-
-/*int	check_valid_path(char **map)
-{
-	// 1. checker if there is a path to the escape
-}*/
 
 static void	check_rectangular_map(char **map)
 {
 	size_t	reference_len;
 	size_t	i;
 
-	reference_len = ft_strlen(map[0]);
 	i = 0;
-	while (map[i])
+	reference_len = ft_strlen(map[0]) - 1;
+	while (map[i + 1] != NULL)
 	{
-		if (ft_strlen(map[i]) != reference_len)
-			exit_function(map, "Map isn't rectangular.");
+		if (map[i][0] != WALLS && map[i][reference_len] != WALLS)
+		{
+			ft_printf("Exit so_long\n");
+			exit_function(map, "Map isn't surrounded by WALLS.");
+		}
+		if (ft_strlen(map[i]) - 1 != reference_len)
+			exit_function(map, "Map isn't rectangular. One line is larger");
 		i++;
 	}
-	if (i == reference_len)
-		exit_function(map, "Map isn't rectagular.");
+	if (i + 1 == reference_len)
+		exit_function(map, "Map isn't rectagular. width == height");
 	// 2. check if the map is surround by WALLS
 }
 

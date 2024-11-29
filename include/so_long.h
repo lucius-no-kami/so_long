@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/29 12:20:49 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/29 16:43:31 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <libft.h>
 # include <mlx.h>
 
-void	so_long(char *map_name);
+char	**so_long(char *map_name);
 char	**parsing_map(char *map_name);
 void	check_map_rules(char **map);
-void	free_tab(char **tab);
+void	free_tab(char **tab, int exit_status);
 
 #endif /* SO_LONG_H */
