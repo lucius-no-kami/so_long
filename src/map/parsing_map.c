@@ -6,25 +6,31 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:03:48 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/27 14:49:47 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:47:24 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	free_tab(char **tab, int numLines)
+void	free_tab(char **tab)
 {
-	while (tab[numLines])
+	int	i;
+
+	i = 0;
+	while (tab[i])
 	{
-		if (tab[numLines] != NULL)
-			free(tab[numLines]);
-		numLines--;
+		if (tab[i] != NULL)
+		{
+			free(tab[i]);
+			tab[i] = NULL;
+		}
+		i++;
 	}
 	free(tab);
 	exit(EXIT_FAILURE);
 }
 
-int	count_line(char *map_file)
+static int	count_line(char *map_file)
 {
 	int	fd;
 	int	count;
@@ -42,7 +48,7 @@ int	count_line(char *map_file)
 	return (count);
 }
 
-char	**get_map(int fd, char **tab, int numLines)
+static char	**get_map(int fd, char **tab, int numLines)
 {
 	int	i;
 
@@ -59,7 +65,7 @@ char	**get_map(int fd, char **tab, int numLines)
 		if (tab[i] == NULL)
 		{
 			ft_printf("Error\nCouldn't fill the 2d tab.");
-			free_tab(tab, i);
+			free_tab(tab);
 		}
 		i++;
 	}
@@ -67,7 +73,7 @@ char	**get_map(int fd, char **tab, int numLines)
 	return (tab);
 }
 
-char	**read_file(char *map_name, char **tab)
+static char	**read_file(char *map_name, char **tab)
 {
 	char	*line;
 	int		fd;
@@ -92,7 +98,7 @@ char	**read_file(char *map_name, char **tab)
 	return (tab);
 }
 
-char	**parsing_map(char *map_name)
+char	**parsing_map(char *map_name	)
 {
 	char	**tab;
 	int		i;

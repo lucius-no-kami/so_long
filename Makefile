@@ -10,7 +10,7 @@ INC_DIR	= include
 
 #---------- SRC ------------#
 
-SRC = main.c so_long.c map/parsing_map.c
+SRC = main.c so_long.c map/parsing_map.c map/map_validity.c
 
 #---------- OBJ ------------#
 
