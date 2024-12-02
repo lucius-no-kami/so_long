@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/01 16:05:36 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:43:51 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 # include "../minilibx_linux/mlx.h"
 
 /* IMG */
-# define PLAYER_PTH		"assets/PLAYER.xpm"
-# define WALLS_PTH		"assets/WALLS.xpm"
-# define COIN_PTH		"assets/COIN.xpm"
-# define EXIT_PTH		"assets/EXIT.xpm"
-# define FLOOR_PTH		"assets/FLOOR.xpm"
+# define PLAYER_PTH		"../assets/player.xpm"
+# define WALLS_PTH		"../assets/walls.xpm"
+# define COIN_PTH		"../assets/coins.xpm"
+# define EXIT_PTH		"../assets/exit.xpm"
+# define FLOOR_PTH		"../assets/floor.xpm"
 
-# define IMG_SIZE		32
+# define IMG_SIZE		16
 
 /* MAP */
 # define EMPTY_SPACE	'0'
@@ -57,7 +57,11 @@ typedef struct s_map
 {
 	char	**map;
 	int		row;
-	int		collum;
+	int		columns;
+	int		player;
+	int		coins;
+	int		exit;
+	int		player;
 	t_pos	player_pos;
 }	t_map;
 

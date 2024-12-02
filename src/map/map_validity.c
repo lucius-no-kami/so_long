@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:55:00 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/01 16:27:55 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:05:14 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	check_char_in_map(t_game *game)
 	{
 		j = -1;
 		current_lline = ft_strlen(game->map.map[i]);
-		if ((current_lline != game->map.collum) && i != 0)
+		if ((current_lline != game->map.columns) && i != 0)
 			error_msg("One line is larger that the other", game);
 		while (j++ < current_lline)
 		{
 			if (!ft_strchr("01CEP", game->map.map[i][j]))
 				error_msg("Unexpected char in the map.", game);
 		}
-		game->map.collum = current_lline;
+		game->map.columns = current_lline;
 		i++;
 	}
-	if (game->map.row == game->map.collum)
+	if (game->map.row == game->map.columns)
 		error_msg("The map is square, expected a rectangulare map", game);
 }
 
