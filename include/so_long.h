@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/02 09:43:51 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:40:49 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include "../libft/libft.h"
 # include "../minilibx_linux/mlx.h"
 
@@ -30,13 +32,20 @@
 # define IMG_SIZE		16
 
 /* MAP */
-# define EMPTY_SPACE	'0'
+# define FLOOR			'0'
 # define WALLS			'1'
-# define COLLECTIBLE	'C'
-# define ESCAPE			'E'
-# define SPAWN			'P'
+# define COIN			'C'
+# define EXIT			'E'
+# define PLAYER			'P'
 
 /* KEY */
+# define KEY_Q			113
+# define KEY_ESC		65307
+
+# define KEY_A			97
+# define KEY_W			119
+# define KEY_S			115
+# define KEY_D			100
 
 /* COLOR */
 # define RED			"\033[0;31m"
@@ -58,8 +67,9 @@ typedef struct s_map
 	char	**map;
 	int		row;
 	int		columns;
-	int		player;
-	int		coins;
+	int		floor;
+	int		wall;
+	int		coin;
 	int		exit;
 	int		player;
 	t_pos	player_pos;
@@ -87,6 +97,11 @@ typedef struct s_game
 }	t_game;
 
 void	init_map(t_game *game, char *map_name);
+void	init_vars(t_game *game);
+void	init_game(t_game *game);
+void	init_imgs(t_game *game);
+int		input_handling(int keycode, t_game *game);
+void	close_game(t_game *game);
 void	check_char_in_map(t_game *game);
 void	destroy_img(t_game *game);
 void	free_map(t_game *game);

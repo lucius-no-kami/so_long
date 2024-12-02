@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/01 16:14:52 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:35:03 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ static void	check_arguments(int ac, char **av, t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	int		i;
 
-	i = 0;
+	ft_printf("\n");
 	ft_printf(CYAN"\
 .▄▄ ·       ▄▄▌         ▐ ▄  ▄▄ • \n\
 ▐█ ▀. ▪     ██•  ▪     •█▌▐█▐█ ▀ ▪\n\
@@ -45,18 +44,14 @@ int	main(int ac, char **av)
 ▐█▄▪▐█▐█▌.▐▌▐█▌▐▌▐█▌.▐▌██▐█▌▐█▄▪▐█\n\
  ▀▀▀▀  ▀█▄▀▪.▀▀▀  ▀█▄▀▪▀▀ █▪·▀▀▀▀ \n\
 "RESET);
-	ft_printf("\n");
 	game = (t_game *)malloc(sizeof(t_game));
 	check_arguments(ac, av, game);
 	init_map(game, av[1]);
+	init_vars(game);
 	check_char_in_map(game);
-	while (i < game->map.row)
-	{
-		ft_printf("%s\n", game->map.map[i]);
-		i++;
-	}
-	ft_printf("\n");
-	free_map(game);
-	free(game);
+	init_game(game);
+	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, input_handling, game);
+	mlx_loop(game->mlx);
+	free_memory(game);
 	return (0);
 }

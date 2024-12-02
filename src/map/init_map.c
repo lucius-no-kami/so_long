@@ -6,11 +6,30 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 09:27:37 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/01 15:03:50 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:02:36 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+
+void	free_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->map.row)
+		free(game->map.map[i++]);
+	free(game->map.map);
+}
+
+void	error_msg(char *msg, t_game *game)
+{
+	ft_printf("%sError\n%s%s", RED, RESET, msg);
+	if (game->map_alloc == 1)
+		free_map(game);
+	free(game);
+	exit(EXIT_FAILURE);
+}
 
 void	check_empty_line(char *map, t_game *game)
 {
