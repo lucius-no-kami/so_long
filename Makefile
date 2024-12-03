@@ -10,7 +10,8 @@ INC_DIR	= include
 
 #---------- SRC ------------#
 
-SRC = so_long.c map/init_map.c map/map_validity.c game/init_game.c game/close_game.c inputs/inputs.c
+SRC =	so_long.c map/init_map.c map/map_validity.c game/init_game.c game/close_game.c inputs/inputs.c \
+		#render/render_sprite.c
 
 #---------- OBJ ------------#
 
