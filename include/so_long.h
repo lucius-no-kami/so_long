@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 18:08:25 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/03 23:05:35 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 # include "../minilibx_linux/mlx.h"
 
 /* IMG */
-# define FLOOR_PTH		"../assets/floor.xpm"
-# define WALLS_PTH		"../assets/walls.xpm"
-# define COIN_PTH		"../assets/coins.xpm"
-# define EXIT_PTH		"../assets/exit.xpm"
-# define PLAYER_PTH		"../assets/player.xpm"
+# define FLOOR_PTH		"assets/floor.xpm"
+# define WALLS_PTH		"assets/wall.xpm"
+# define COIN_PTH		"assets/coin.xpm"
+# define EXIT_PTH		"assets/exit.xpm"
+# define PLAYER_PTH		"assets/player.xpm"
 
-# define IMG_SIZE		16
+# define IMG_SIZE		64
 
 /* MAP */
 # define FLOOR			'0'

@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 18:10:49 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/03 23:06:18 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	main(int ac, char **av)
 	check_char_in_map(game);
 	init_game(game);
 	init_imgs(game);
-	ft_printf("sprite x: %d ;; sprite y: %d\n", game->floor.x, game->floor.y);
 	ft_printf("sprite x: %d ;; sprite y: %d\n", \
 	((x % game->floor.x) * IMG_SIZE), ((x / game->floor.y) * IMG_SIZE));
 	mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.xpm_ptr, \
