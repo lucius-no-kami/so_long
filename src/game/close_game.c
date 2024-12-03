@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:52:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 15:23:50 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:58:55 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	free_memory(t_game *game)
 	return (0);
 }
 
-void	close_game(t_game *game)
+int	close_game(t_game *game)
 {
 	ft_printf(CYAN"Movements: %d\n"RESET, game->cmove);
 	free_memory(game);

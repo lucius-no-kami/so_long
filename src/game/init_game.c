@@ -6,17 +6,18 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 21:11:53 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 14:22:16 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:16:20 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-static t_img	new_img(void *mlx, char *img_path, t_game *game)
+t_img	new_img(void *mlx, char *img_path, t_game *game)
 {
 	t_img	sprite;
 
 	sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, img_path, &sprite.x, &sprite.y);
+	ft_printf("Test: x->%d :: y->%d\n", sprite.x, sprite.y);
 	if (sprite.xpm_ptr != NULL)
 		error_msg("Image couldn't be created", game);
 	return (sprite);
@@ -55,7 +56,6 @@ void	init_imgs(t_game *game)
 
 	mlx = game->mlx;
 	game->floor = new_img(mlx, FLOOR_PTH, game);
-	ft_printf("Test: %d :: %d\n", game->wall.x, game->wall.y);
 	game->wall = new_img(mlx, WALLS_PTH, game);
 	game->coin = new_img(mlx, COIN_PTH, game);
 	game->exit = new_img(mlx, EXIT_PTH, game);

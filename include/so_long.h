@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 15:24:13 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:08:25 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define EXIT_PTH		"../assets/exit.xpm"
 # define PLAYER_PTH		"../assets/player.xpm"
 
-# define IMG_SIZE		32
+# define IMG_SIZE		16
 
 /* MAP */
 # define FLOOR			'0'
@@ -101,11 +101,11 @@ void	init_vars(t_game *game);
 void	init_game(t_game *game);
 void	init_imgs(t_game *game);
 int		input_handling(int keycode, t_game *game);
-void	close_game(t_game *game);
+int		close_game(t_game *game);
 void	check_char_in_map(t_game *game);
 void	destroy_img(t_game *game);
 void	free_map(t_game *game);
-int	free_memory(t_game *game);
+int		free_memory(t_game *game);
 void	error_msg(char *msg, t_game *game);
 
 #endif /* SO_LONG_H */

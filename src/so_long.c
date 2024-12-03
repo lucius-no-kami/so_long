@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 15:23:32 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:10:49 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ static void	check_arguments(int ac, char **av, t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
+	int		x;
 
+	x = 0;
 	ft_printf("\n");
 	ft_printf(CYAN"\
 .▄▄ ·       ▄▄▌         ▐ ▄  ▄▄ • \n\
@@ -53,10 +55,13 @@ int	main(int ac, char **av)
 	check_char_in_map(game);
 	init_game(game);
 	init_imgs(game);
+	ft_printf("sprite x: %d ;; sprite y: %d\n", game->floor.x, game->floor.y);
 	ft_printf("sprite x: %d ;; sprite y: %d\n", \
-	((1 / game->map.columns) * IMG_SIZE), ((1 % game->map.columns) * IMG_SIZE));
+	((x % game->floor.x) * IMG_SIZE), ((x / game->floor.y) * IMG_SIZE));
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor.xpm_ptr, \
+	((x % game->floor.x) * IMG_SIZE), ((x / game->floor.y) * IMG_SIZE));
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, input_handling, game);
-	mlx_hook(game->mlx_win, DestroyNotify, SubstructureNotifyMask, free_memory, game);
+	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask, close_game, game);
 	mlx_loop(game->mlx);
 	free_memory(game);
 	return (0);
