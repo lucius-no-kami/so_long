@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 21:11:53 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 22:53:45 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:50:54 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_imgs(t_game *game)
 	mlx = game->mlx;
 	game->floor = new_img(mlx, FLOOR_PTH, game);
 	game->wall = new_img(mlx, WALLS_PTH, game);
-	game->coin = new_img(mlx, COIN_PTH, game);
-	game->exit = new_img(mlx, EXIT_PTH, game);
-	game->player = new_img(mlx, PLAYER_PTH, game);
+	//game->coin = new_img(mlx, COIN_PTH, game);
+	//game->exit = new_img(mlx, EXIT_PTH, game);
+	//game->player = new_img(mlx, PLAYER_PTH, game);
 }
