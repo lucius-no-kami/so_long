@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/04 12:49:17 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:07:54 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ typedef struct s_game
 	int		cmove;
 	int		map_alloc;
 	t_map	map;
-	t_img	player;
-	t_img	wall;
 	t_img	floor;
-	t_img	exit;
+	t_img	wall;
 	t_img	coin;
+	t_img	exit;
+	t_img	player;
 }	t_game;
 
 void	init_map(t_game *game, char *map_name);
@@ -104,6 +104,7 @@ void	check_map_validity(t_game *game);
 void	check_char_in_map(t_game *game);
 void	count_map_value(t_game *game);
 void	verify_map_value(t_game *game);
+void	render_map(t_game *game);
 int		input_handling(int keycode, t_game *game);
 int		close_game(t_game *game);
 void	destroy_img(t_game *game);
