@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/03 23:06:18 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:51:44 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int ac, char **av)
 	check_arguments(ac, av, game);
 	init_map(game, av[1]);
 	init_vars(game);
-	check_char_in_map(game);
+	check_map_validity(game);
 	init_game(game);
 	init_imgs(game);
 	ft_printf("sprite x: %d ;; sprite y: %d\n", \

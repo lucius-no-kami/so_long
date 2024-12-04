@@ -6,11 +6,18 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 09:27:37 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/02 17:02:36 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:54:04 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
+
+void	check_map_validity(t_game *game)
+{
+	check_char_in_map(game);
+	count_map_value(game);
+	verify_map_value(game);
+}
 
 void	free_map(t_game *game)
 {
