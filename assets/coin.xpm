@@ -1,13 +1,13 @@
 /* XPM */
-static char *result[] = {
+static char *c4c53ef297f74af89f181e3255abbcabVc1fRP8zKAKgpKqT[] = {
 /* columns rows colors chars-per-pixel */
 "32 32 6 1 ",
-"  c None",
+"  c #3E3C42",
 ". c #6C3B4F",
 "X c #FBFCAA",
 "o c #FFCE00",
 "O c #F29546",
-"+ c white",
+"+ c #2F2D32",
 /* pixels */
 "                                ",
 "                                ",
@@ -33,7 +33,7 @@ static char *result[] = {
 "   .OooXooooooOoOoOoooooXooO.   ",
 "    .ooXoooooooOoOooooooXoo.    ",
 "    .OooXooooooooooooooXooO.    ",
-"     .OooXooooooooooooXooO.     ",
+"   ++.OooXooooooooooooXooO.     ",
 "      .OooXXooooooooXXooO.      ",
 "       .OOooXXXXXXXXooOO.       ",
 "        ..OOooooooooOO..        ",

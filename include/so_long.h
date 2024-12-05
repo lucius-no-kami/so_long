@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/05 13:35:32 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:00:01 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define FLOOR_PTH		"assets/floor.xpm"
 # define WALLS_PTH		"assets/wall.xpm"
 # define COIN_PTH		"assets/coin.xpm"
-//# define EXIT_PTH		"assets/exit.xpm"
+# define EXIT_PTH		"assets/exit.xpm"
 # define PLAYER_PTH		"assets/player.xpm"
 
 # define IMG_SIZE		32
