@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:07:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/04 16:05:26 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:35:07 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ static void	render_sprite(t_game *game, t_img sprite, int x, int y)
 
 static void	identify_sprite(t_game *game, char c, int x, int y)
 {
-	if (c == FLOOR || c == COIN || c == EXIT || c == PLAYER)
+	if (c == FLOOR || c == EXIT)
 		render_sprite(game, game->floor, x, y);
 	if (c == WALLS)
 		render_sprite(game, game->wall, x, y);
+	if (c == COIN)
+		render_sprite(game, game->coin, x, y);
+	if (c == PLAYER)
+		render_sprite(game, game->player, x, y);
 }
 
 void	render_map(t_game *game)
