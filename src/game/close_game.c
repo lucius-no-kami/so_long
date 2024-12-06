@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:52:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 10:07:51 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:45:37 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	destroy_img(t_game *game)
 	mlx_destroy_image(game->mlx, game->coin.xpm_ptr);
 	mlx_destroy_image(game->mlx, game->exit.xpm_ptr);
 	mlx_destroy_image(game->mlx, game->player.xpm_ptr);
-
 }
 
 int	free_memory(t_game *game)

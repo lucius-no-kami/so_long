@@ -6,13 +6,14 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:38:51 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 10:50:58 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:44:57 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+/*#include "../../include/so_long.h"
 
 void	check_valid_path(t_map *map)
 {
 	
 }
+*/
