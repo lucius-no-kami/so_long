@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:10:23 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 10:02:56 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:08:03 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	horizontal_movement(t_game *game, int x, int *y, int step)
 		*y += step;
 		game->map.map[x][*y] = PLAYER;
 		game->cmove++;
-		ft_printf(CYAN"Movements: %d\n"RESET, game->cmove);
+		ft_printf(GREEN"Movements: %d\n"RESET, game->cmove);
 	}
 }
 
@@ -48,6 +48,6 @@ void	vertical_movement(t_game *game, int *x, int y, int step)
 		*x += step;
 		game->map.map[*x][y] = PLAYER;
 		game->cmove++;
-		ft_printf(CYAN"Movements: %d\n"RESET, game->cmove);
+		ft_printf(GREEN"Movements: %d\n"RESET, game->cmove);
 	}
 }

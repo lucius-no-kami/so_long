@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:52:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 09:47:52 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:07:51 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,15 @@ int	free_memory(t_game *game)
 
 int	close_game(t_game *game)
 {
-	ft_printf(CYAN"Movements: %d\n"RESET, game->cmove);
+	ft_printf(CYAN"\n\
+	▀▄    ▄ ████▄   ▄         ▄ ▄   ▄█    ▄   \n\
+  █  █  █   █    █       █   █  ██     █  \n\
+   ▀█   █   █ █   █     █ ▄   █ ██ ██   █ \n\
+   █    ▀████ █   █     █  █  █ ▐█ █ █  █ \n\
+ ▄▀           █▄ ▄█      █ █ █   ▐ █  █ █ \n\
+               ▀▀▀        ▀ ▀      █   ██ \n\
+"RESET);
+	ft_printf(GREEN"Movements: %d\n"RESET, game->cmove);
 	free_memory(game);
 	ft_printf(RED"GAME CLOSED\n"RESET);
 	exit(EXIT_SUCCESS);
