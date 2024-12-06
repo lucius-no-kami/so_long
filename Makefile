@@ -1,75 +1,109 @@
-#--------- SO_LONG ---------#
-
 NAME = so_long
 
-#---------- DIR ------------#
+SRCDIR = src
+OBJDIR = obj
+INCDIR = include
 
-SRC_DIR = src
-OBJ_DIR = obj
-INC_DIR	= include
-
-#---------- SRC ------------#
-
-SRC =	so_long.c map/init_map.c map/map_validity.c game/init_game.c game/close_game.c inputs/inputs.c \
-		render/render_sprite.c   player/player_movements.c
-
-#---------- OBJ ------------#
-
+# Source Files
+SRC = inputs/inputs.c game/init_game.c game/check_valid_path.c game/close_game.c so_long.c render/render_sprite.c map/map_validity.c map/init_map.c player/player_movements.c 
 OBJ = $(SRC:.c=.o)
-SRC := $(addprefix $(SRC_DIR)/, $(SRC))
-OBJ := $(patsubst $(SRC_DIR)/%, $(OBJ_DIR)/%, $(OBJ)) # Permet de remplacer le src/ devant l'objet par obj/ (src/ se met car il transforme les fichiers sources src/name.c en src/name.o)
+SRC := $(addprefix $(SRCDIR)/, $(SRC))
+OBJ := $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(OBJ))
 
-#--------- LIBFT -----------#
+# Libft - Please configure your own path if different
+LIBFT_DIR := libft
+LIBFT := $(LIBFT_DIR)/libft.a
+LIBFT_INCLUDE := $(LIBFT_DIR)#/include 		#Your header file in include dir ?
+# MiniLibx -> Please include in header file: #include "mlx.h"
+MINILIBX_DIR := ./minilibx-linux
+MLX := $(MINILIBX_DIR)/libmlx.a
+# Libraries and Linker Flags
+LDFLAGS =  -L$(MINILIBX_DIR) -L$(LIBFT_DIR)
+LIBS =  $(MLX) $(LIBFT)
 
-LIBFT_DIR 	= libft
-LIBFT		= $(LIBFT_DIR)/libft.a
+# Archiver
+AR = ar
+ARFLAGS = rcs
 
-#---------- MLX ------------#
+# Compiler and Flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -g3 -I$(MINILIBX_DIR) -I/usr/include/X11 -I$(LIBFT_INCLUDE)
 
-MLX_DIR	= minilibx_linux
-MLX		= $(MLX_DIR)/libmlx.a
+# Detect OS for Flags MiniLibx
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	MLXFLAGS += -lmlx -lXext -lX11
+else ifeq ($(UNAME_S),Darwin)
+	MLXFLAGS += -L/opt/X11/lib -lX11 -lXext -lXrandr -lXcursor
+endif
 
-#------- LIB FLAGS ---------#
 
-LBFLAGS	= -L$(MLX_DIR) -L$(LIBFT_DIR)
-LIBS	= $(MLX) $(LIBFT)
+# Compilation mode (silent by default, set VERBOSE=1 to show commands)
+VERBOSE ?= 0
+ifeq ($(VERBOSE),1)
+  V := 
+else
+  V := @
+endif
 
-#------ COMP & FLAGS -------#
+# Colors
+RED     := "\033[1;31m"
+GREEN   := "\033[1;32m"
+RESET   := "\033[0m"
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -I$(INC_DIR) -g3 -I$(MLX_DIR) -I/user/include/X11 -I$(LIBFT_DIR)
-MLX_FLAGS	= -lXext -lX11 -lm -lz
 
-#---------- RULES ----------#
 
-all: $(MLX_DIR) $(LIBFT_DIR) $(NAME)
+# Default Rule
+all: $(OBJDIR) $(MINILIBX_DIR) $(LIBFT) $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(LBFLAGS) $(OBJ) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+# Object Directory Rule
+$(OBJDIR):
+	$(V)mkdir -p $(OBJDIR) || true
 
-# Permet de creer le repertoire pour les obj
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# Dependency Files
+DEP = $(OBJ:.o=.d)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(V)$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
 
+-include $(DEP)
+
+# Linking Rule
+$(NAME): $(OBJ) $(LIBFT)
+	$(V)$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(BONUS_OBJ) $(LIBS) $(MLXFLAGS) -o $(NAME)
+	$(V)echo $(GREEN)"[$(NAME)] Executable created ✅"$(RESET)
+
+# Libft
 $(LIBFT):
-	@$(MAKE) --silent -C $(LIBFT_DIR)
-	$(info CREATED $(LIBFT))
+	$(V)$(MAKE) --silent -C $(LIBFT_DIR)
+	$(V)echo '[$(NAME)] Libft build successfully'
 
-$(MLX):
-	$(MAKE) -C $(MLX_DIR)
+# MiniLibX
+$(MINILIBX_DIR):
+	$(V)echo '[$(NAME)] Downloading MiniLibX from github.com...'$(RESET)
+	@git clone https://github.com/42Paris/minilibx-linux.git $(MINILIBX_DIR) > /dev/null 2>&1
+	$(V)echo '[$(NAME)] Compiling MiniLibX...'$(RESET)
+	@$(MAKE) -C $(MINILIBX_DIR) > /dev/null 2>&1
+	$(V)echo '[$(NAME)] MiniLibX installed successfully'$(RESET)
 
+# Clean Rules
 clean:
-	rm -rf $(OBJ_DIR)
+	$(V)echo $(RED)'[$(NAME)] Cleaning objects'd$(RESET)
+	$(V)rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -rf $(NAME)
-	@$(MAKE) --silent -C $(LIBFT_DIR) fclean
-	@$(MAKE) --silent -C $(MLX_DIR) clean
+	$(V)echo $(RED)'[$(NAME)] Cleaning all files'$(RESET)
+	$(V)rm -f $(NAME)
+	$(V)$(MAKE) --silent -C $(LIBFT_DIR) fclean
+	$(V)echo $(RED)'[mlx] Remove directory'$(RESET)
+	@rm -rf $(MINILIBX_DIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+# Makefile Reconfiguration 
+regen:
+	makemyfile
+
+.PHONY: all clean fclean re bonus regen
+.DEFAULT_GOAL := all

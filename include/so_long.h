@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 09:28:07 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 13:53:45 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include "../libft/libft.h"
-# include "../minilibx_linux/mlx.h"
+# include "mlx.h"
 
 /* IMG */
-# define FLOOR_PTH		"assets/floor.xpm"
+# define FLOOR_PTH		"assets/floors.xpm"
 # define WALLS_PTH		"assets/wall.xpm"
 # define COIN_PTH		"assets/coin.xpm"
 # define EXIT_PTH		"assets/exit.xpm"
