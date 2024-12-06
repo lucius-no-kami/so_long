@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/05 18:00:01 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 09:28:07 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ void	check_map_validity(t_game *game);
 void	check_char_in_map(t_game *game);
 void	count_map_value(t_game *game);
 void	verify_map_value(t_game *game);
-void	render_map(t_game *game);
+int		render_map(t_game *game);
+void	render_sprite(t_game *game, t_img sprite, int x, int y);
+void	horizontal_movement(t_game *game, int x, int *y, int step);
+void	vertical_movement(t_game *game, int *x, int y, int step);
 int		input_handling(int keycode, t_game *game);
 int		close_game(t_game *game);
 void	destroy_img(t_game *game);

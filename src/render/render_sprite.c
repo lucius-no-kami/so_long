@@ -6,13 +6,13 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:07:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/05 17:59:56 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:03:06 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-static void	render_sprite(t_game *game, t_img sprite, int x, int y)
+void	render_sprite(t_game *game, t_img sprite, int x, int y)
 {
 	mlx_put_image_to_window(game->mlx, game->mlx_win, \
 	sprite.xpm_ptr, y * sprite.y, x * sprite.x);
@@ -32,7 +32,7 @@ static void	identify_sprite(t_game *game, char c, int x, int y)
 		render_sprite(game, game->player, x, y);
 }
 
-void	render_map(t_game *game)
+int	render_map(t_game *game)
 {
 	int	x;
 	int	y;
@@ -48,4 +48,5 @@ void	render_map(t_game *game)
 		}
 		y++;
 	}
+	return (0);
 }

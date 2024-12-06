@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/05 15:49:29 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:03:36 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,7 @@ static void	check_arguments(int ac, char **av, t_game *game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
-	//int		x;
 
-	//x = 0;
-	ft_printf("\n");
 	ft_printf(CYAN"\
 .▄▄ ·       ▄▄▌         ▐ ▄  ▄▄ • \n\
 ▐█ ▀. ▪     ██•  ▪     •█▌▐█▐█ ▀ ▪\n\
@@ -58,6 +55,7 @@ int	main(int ac, char **av)
 	render_map(game);
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, input_handling, game);
 	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask, close_game, game);
+	mlx_loop_hook(game->mlx, render_map, game);
 	mlx_loop(game->mlx);
 	free_memory(game);
 	return (0);

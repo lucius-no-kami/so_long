@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 21:11:53 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/05 18:01:17 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/06 08:17:02 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	init_vars(t_game *game)
 	game->map.player = 0;
 	game->map.coin = 0;
 	game->map.exit = 0;
-	game->map.player = 0;
+	game->map.player_pos.x = 0;
+	game->map.player_pos.y = 0;
 }
 
 void	init_game(t_game *game)
