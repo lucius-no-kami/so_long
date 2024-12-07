@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:38:51 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 13:47:02 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:22:21 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 void	free_map_copy(char **map, int index)
 {
-	while (--index)
-		if (!map[index])
-			free(map[index]);
+	int	i;
+
+	i = 0;
+	while (i < index)
+	{
+		if (map[i] != NULL)
+			free(map[i]);
+		i++;
+	}
 	free(map);
 }
 
@@ -60,18 +66,21 @@ void	path_finder(t_game *game, t_map map)
 
 	tmp = copy_map(game, map);
 	i = 0;
-	floodfill(map.map, 'T', map.player_pos.x, map.player_pos.y);
+	floodfill(tmp, 'T', map.player_pos.x, map.player_pos.y);
 	while (map.map[i])
 	{
 		j = 0;
 		while (map.map[i][j])
 		{
-			if (!((map.map[i][j] == EXIT || map.map[i][j] == COIN) \
+			if (((map.map[i][j] == EXIT || map.map[i][j] == COIN) \
 			&& tmp[i][j] != 'T'))
+			{
+				free_map_copy(tmp, i);
 				error_msg("There is no valid path to objectives", game);
+			}
 			j++;
 		}
 		i++;
 	}
-	i = 0;
+	free_map_copy(tmp, i);
 }
