@@ -6,18 +6,46 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:38:51 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 11:28:36 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 13:47:02 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	floodfill(t_map map, char paint, int x, int y)
+void	free_map_copy(char **map, int index)
 {
-	if (map.map[x][y] == 'T' || map.map[x][y] == WALLS \
-	|| x < 0 || x >= map.row || y < 0 || y >= map.columns)
+	while (--index)
+		if (!map[index])
+			free(map[index]);
+	free(map);
+}
+
+char	**copy_map(t_game *game, t_map map)
+{
+	int		i;
+	char	**copy;
+
+	i = -1;
+	copy = (char **)malloc((map.row + 1) * sizeof(char *));
+	if (!copy)
+		error_msg("Couldn't allocate memory in copy_map", game);
+	while (++i < map.row)
+	{
+		copy[i] = ft_strdup(map.map[i]);
+		if (!copy[i])
+		{
+			free_map_copy(copy, i);
+			error_msg("Couldn't allocate memory in copy_map", game);
+		}
+	}
+	return (copy);
+}
+
+void	floodfill(char **map, char paint, int x, int y)
+{
+	if (map[x][y] == 'T' || map[x][y] == WALLS)
 		return ;
-	map.map[x][y] = paint;
+	map[x][y] = paint;
 	floodfill(map, paint, x - 1, y);
 	floodfill(map, paint, x + 1, y);
 	floodfill(map, paint, x, y - 1);
@@ -26,23 +54,24 @@ void	floodfill(t_map map, char paint, int x, int y)
 
 void	path_finder(t_game *game, t_map map)
 {
-	t_map	tmp;
+	char	**tmp;
 	int		i;
 	int		j;
 
-	tmp = map;
+	tmp = copy_map(game, map);
 	i = 0;
-	floodfill(tmp, 'T', map.player_pos.x, map.player_pos.y);
+	floodfill(map.map, 'T', map.player_pos.x, map.player_pos.y);
 	while (map.map[i])
 	{
 		j = 0;
 		while (map.map[i][j])
 		{
-			if ((map.map[i][j] == EXIT || map.map[i][j] == COIN) \
-			&& tmp.map[i][j] != 'T')
+			if (!((map.map[i][j] == EXIT || map.map[i][j] == COIN) \
+			&& tmp[i][j] != 'T'))
 				error_msg("There is no valid path to objectives", game);
 			j++;
 		}
 		i++;
 	}
+	i = 0;
 }
