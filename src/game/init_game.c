@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 21:11:53 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 13:48:22 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:19:30 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,11 @@ void	init_vars(t_game *game)
 void	init_game(t_game *game)
 {
 	game->mlx = mlx_init();
-	if (game->mlx == NULL)
-	{
-		free(game->mlx);
+	if (!game->mlx)
 		error_msg("Mlx ptr couldn't be created.", game);
-	}
 	game->mlx_win = mlx_new_window(game->mlx, \
 	(game->map.columns * IMG_SIZE), (game->map.row * IMG_SIZE), "so_long");
-	if (game->mlx_win == NULL)
+	if (!game->mlx_win)
 	{
 		free(game->mlx);
 		error_msg("Window couldn't be created.", game);

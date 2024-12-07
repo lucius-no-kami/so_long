@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 09:01:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 10:03:36 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:55:31 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int ac, char **av)
 	init_imgs(game);
 	render_map(game);
 	mlx_hook(game->mlx_win, KeyPress, KeyPressMask, input_handling, game);
-	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask, close_game, game);
+	mlx_hook(game->mlx_win, DestroyNotify, ButtonPressMask, free_memory, game);
 	mlx_loop_hook(game->mlx, render_map, game);
 	mlx_loop(game->mlx);
 	free_memory(game);

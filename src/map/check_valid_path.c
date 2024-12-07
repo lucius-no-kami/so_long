@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:38:51 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 16:22:21 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:45:44 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ char	**copy_map(t_game *game, t_map map)
 	int		i;
 	char	**copy;
 
-	i = -1;
+	i = 0;
 	copy = (char **)malloc((map.row + 1) * sizeof(char *));
 	if (!copy)
 		error_msg("Couldn't allocate memory in copy_map", game);
-	while (++i < map.row)
+	while (i < map.row)
 	{
 		copy[i] = ft_strdup(map.map[i]);
 		if (!copy[i])
@@ -43,6 +43,7 @@ char	**copy_map(t_game *game, t_map map)
 			free_map_copy(copy, i);
 			error_msg("Couldn't allocate memory in copy_map", game);
 		}
+		i++;
 	}
 	return (copy);
 }
@@ -75,7 +76,7 @@ void	path_finder(t_game *game, t_map map)
 			if (((map.map[i][j] == EXIT || map.map[i][j] == COIN) \
 			&& tmp[i][j] != 'T'))
 			{
-				free_map_copy(tmp, i);
+				free_map_copy(tmp, map.row);
 				error_msg("There is no valid path to objectives", game);
 			}
 			j++;

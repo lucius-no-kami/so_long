@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 15:54:58 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:39:49 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	render_sprite(t_game *game, t_img sprite, int x, int y);
 void	horizontal_movement(t_game *game, int x, int *y, int step);
 void	vertical_movement(t_game *game, int *x, int y, int step);
 int		input_handling(int keycode, t_game *game);
-int		close_game(t_game *game);
+void	close_game(t_game *game);
 void	destroy_img(t_game *game);
 void	free_map(t_game *game);
 int		free_memory(t_game *game);

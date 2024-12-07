@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:52:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 12:54:40 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:40:56 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int	free_memory(t_game *game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	free(game);
-	return (0);
+	ft_printf(RED"GAME CLOSED\n"RESET);
+	exit(EXIT_FAILURE);
 }
 
-int	close_game(t_game *game)
+void	close_game(t_game *game)
 {
 	ft_printf(CYAN"\n\
 	▀▄    ▄ ████▄   ▄         ▄ ▄   ▄█    ▄   \n\
@@ -44,6 +45,4 @@ int	close_game(t_game *game)
 "RESET);
 	ft_printf(GREEN"Movements: %d\n"RESET, game->cmove);
 	free_memory(game);
-	ft_printf(RED"GAME CLOSED\n"RESET);
-	exit(EXIT_SUCCESS);
 }
