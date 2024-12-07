@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 13:53:45 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 11:28:34 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "mlx.h"
 
 /* IMG */
-# define FLOOR_PTH		"assets/floors.xpm"
+# define FLOOR_PTH		"assets/floor.xpm"
 # define WALLS_PTH		"assets/wall.xpm"
 # define COIN_PTH		"assets/coin.xpm"
 # define EXIT_PTH		"assets/exit.xpm"
@@ -104,6 +104,7 @@ void	check_map_validity(t_game *game);
 void	check_char_in_map(t_game *game);
 void	count_map_value(t_game *game);
 void	verify_map_value(t_game *game);
+void	path_finder(t_game *game, t_map map);
 int		render_map(t_game *game);
 void	render_sprite(t_game *game, t_img sprite, int x, int y);
 void	horizontal_movement(t_game *game, int x, int *y, int step);

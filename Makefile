@@ -5,7 +5,7 @@ OBJDIR = obj
 INCDIR = include
 
 # Source Files
-SRC = inputs/inputs.c game/init_game.c game/check_valid_path.c game/close_game.c so_long.c render/render_sprite.c map/map_validity.c map/init_map.c player/player_movements.c 
+SRC = inputs/inputs.c game/init_game.c game/close_game.c so_long.c render/render_sprite.c map/check_valid_path.c map/map_validity.c map/init_map.c player/player_movements.c 
 OBJ = $(SRC:.c=.o)
 SRC := $(addprefix $(SRCDIR)/, $(SRC))
 OBJ := $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(OBJ))

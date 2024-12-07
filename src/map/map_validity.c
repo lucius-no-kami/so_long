@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:55:00 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/04 14:13:34 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/07 11:28:31 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	check_walls(t_game *game)
 			|| game->map.map[i][ligne_len] != WALLS)
 			error_msg("Map is not surrounded by walls.", game);
 	}
+	path_finder(game, game->map);
 }
 
 void	verify_map_value(t_game *game)
