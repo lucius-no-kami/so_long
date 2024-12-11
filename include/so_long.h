@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 17:30:36 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 08:16:13 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@
 # define KEY_W			119
 # define KEY_S			115
 # define KEY_D			100
+
+# define KEY_UP			65362
+# define KEY_DOWN		65364
+# define KEY_RIGHT		65363
+# define KEY_LEFT		65361
 
 /* COLOR */
 # define RED			"\033[0;31m"

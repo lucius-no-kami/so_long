@@ -21,10 +21,10 @@ OBJ = $(SRC:.c=.o)
 SRC := $(addprefix $(SRCDIR)/, $(SRC))
 OBJ := $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(OBJ))
 
-# Libft - Please configure your own path if different
+# Libft
 LIBFT_DIR := libft
 LIBFT := $(LIBFT_DIR)/libft.a
-LIBFT_INCLUDE := $(LIBFT_DIR)#/include 		#Your header file in include dir ?
+LIBFT_INCLUDE := $(LIBFT_DIR)#/include
 # MiniLibx -> Please include in header file: #include "mlx.h"
 MINILIBX_DIR := ./minilibx-linux
 MLX := $(MINILIBX_DIR)/libmlx.a
@@ -111,10 +111,6 @@ fclean: clean
 	@rm -rf $(MINILIBX_DIR)
 
 re: fclean all
-
-# Makefile Reconfiguration 
-regen:
-	makemyfile
 
 .PHONY: all clean fclean re bonus regen
 .DEFAULT_GOAL := all
