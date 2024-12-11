@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:07:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 13:05:57 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:36:11 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	render_map(t_game *game)
 		x = 0;
 		while (game->map.map[y][x])
 		{
-			//ft_printf("Test: %c (%d, %d)\n", game->map.map[y][x], y, x);
 			identify_sprite(game, game->map.map[y][x], y, x);
 			x++;
 		}

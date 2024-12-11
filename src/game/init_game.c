@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 21:11:53 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 17:46:57 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:55:17 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ t_img	new_img(void *mlx, char *img_path, t_game *game)
 
 	sprite.xpm_ptr = mlx_xpm_file_to_image(mlx, img_path, &sprite.x, &sprite.y);
 	if (sprite.xpm_ptr == NULL)
-		error_msg("Image couldn't be created", game);
+	{
+		ft_printf("%sError\n%sImage couldn't be created\n", RED, RESET);
+		free_memory(game);
+	}
 	return (sprite);
 }
 
@@ -31,6 +34,11 @@ void	init_vars(t_game *game)
 	game->map.exit = 0;
 	game->map.player_pos.x = 0;
 	game->map.player_pos.y = 0;
+	game->floor.xpm_ptr = NULL;
+	game->wall.xpm_ptr = NULL;
+	game->coin.xpm_ptr = NULL;
+	game->exit.xpm_ptr = NULL;
+	game->player.xpm_ptr = NULL;
 }
 
 void	init_game(t_game *game)

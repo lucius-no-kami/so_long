@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 09:27:37 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 17:46:45 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:58:25 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	init_map(t_game *game, char *map_name)
 	int		fd;
 
 	fd = open(map_name, O_RDONLY);
+	game->map_alloc = 0;
 	if (fd == -1)
 		error_msg("Couldn't open the file", game);
 	map_temp = ft_strdup("");

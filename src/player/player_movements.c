@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:10:23 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/06 10:08:03 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:35:52 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	vertical_movement(t_game *game, int *x, int y, int step)
 	if (game->map.map[*x + step][y] != WALLS)
 	{
 		if (game->map.map[*x + step][y] == COIN)
-		game->map.coin--;
+			game->map.coin--;
 		if (game->map.map[*x + step][y] == EXIT \
 		&& game->map.coin == 0)
 			close_game(game);

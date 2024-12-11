@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 08:52:20 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/08 12:54:02 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:42:44 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 void	destroy_img(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->floor.xpm_ptr);
-	mlx_destroy_image(game->mlx, game->wall.xpm_ptr);
-	mlx_destroy_image(game->mlx, game->coin.xpm_ptr);
-	mlx_destroy_image(game->mlx, game->exit.xpm_ptr);
-	mlx_destroy_image(game->mlx, game->player.xpm_ptr);
+	if (game->floor.xpm_ptr != NULL)
+		mlx_destroy_image(game->mlx, game->floor.xpm_ptr);
+	if (game->wall.xpm_ptr != NULL)
+		mlx_destroy_image(game->mlx, game->wall.xpm_ptr);
+	if (game->coin.xpm_ptr != NULL)
+		mlx_destroy_image(game->mlx, game->coin.xpm_ptr);
+	if (game->exit.xpm_ptr != NULL)
+		mlx_destroy_image(game->mlx, game->exit.xpm_ptr);
+	if (game->player.xpm_ptr != NULL)
+		mlx_destroy_image(game->mlx, game->player.xpm_ptr);
 }
 
 int	free_memory(t_game *game)

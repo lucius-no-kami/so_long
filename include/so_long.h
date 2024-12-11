@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 08:16:13 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:37:41 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ typedef struct s_map
 	char	**map;
 	int		row;
 	int		columns;
-	int		floor;
-	int		wall;
 	int		coin;
 	int		exit;
 	int		player;

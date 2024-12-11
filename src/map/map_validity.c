@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:55:00 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 12:55:35 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:53:10 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	verify_map_value(t_game *game)
 {
 	if (game->map.player != 1)
 		error_msg("The game can handle only one player", game);
-	if (game->map.exit == 0)
-		error_msg("The game should have atleast one exit", game);
+	if (game->map.exit != 1)
+		error_msg("The game should have only one exit", game);
 	if (game->map.coin == 0)
 		error_msg("The game should have atleast one coin", game);
 	check_walls(game);
@@ -58,11 +58,7 @@ void	count_map_value(t_game *game)
 		j = -1;
 		while (++j < game->map.columns)
 		{
-			if (game->map.map[i][j] == FLOOR)
-				game->map.floor++;
-			else if (game->map.map[i][j] == WALLS)
-				game->map.wall++;
-			else if (game->map.map[i][j] == COIN)
+			if (game->map.map[i][j] == COIN)
 				game->map.coin++;
 			else if (game->map.map[i][j] == EXIT)
 				game->map.exit++;
