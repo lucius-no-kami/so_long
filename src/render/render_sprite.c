@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:07:30 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 17:36:11 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:31 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 void	render_sprite(t_game *game, t_img sprite, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 09:27:37 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 17:58:25 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:06 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 void	check_map_validity(t_game *game)
 {
@@ -89,4 +89,5 @@ void	init_map(t_game *game, char *map_name)
 	game->map.map = ft_split(map_temp, '\n');
 	game->map_alloc = 1;
 	free(map_temp);
+	close(fd);
 }

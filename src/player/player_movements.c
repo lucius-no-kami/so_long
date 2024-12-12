@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:10:23 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 17:35:52 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:26 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 void	horizontal_movement(t_game *game, int x, int *y, int step)
 {

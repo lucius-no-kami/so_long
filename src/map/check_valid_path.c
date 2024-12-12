@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 10:38:51 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/07 16:45:44 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:17 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 void	free_map_copy(char **map, int index)
 {

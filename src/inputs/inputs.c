@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 17:00:05 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 08:16:57 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:45 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 int	input_handling(int keycode, t_game *game)
 {

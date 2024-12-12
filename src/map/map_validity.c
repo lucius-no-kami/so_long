@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 10:55:00 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 17:53:10 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:21 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 static void	check_walls(t_game *game)
 {

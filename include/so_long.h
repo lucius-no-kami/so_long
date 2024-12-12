@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:07:09 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 17:37:41 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:09:07 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include "mlx.h"
 
 /* IMG */

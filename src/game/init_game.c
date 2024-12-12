@@ -6,11 +6,11 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 21:11:53 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/12/11 17:55:17 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:11:51 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "so_long.h"
 
 t_img	new_img(void *mlx, char *img_path, t_game *game)
 {
