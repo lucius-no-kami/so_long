@@ -6,7 +6,7 @@
 /*   By: luluzuri <luluzuri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 14:54:54 by luluzuri          #+#    #+#             */
-/*   Updated: 2024/11/25 14:06:42 by luluzuri         ###   ########.fr       */
+/*   Updated: 2024/12/12 08:15:16 by luluzuri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	ft_printf(const char *format, ...)
 	va_list	args;
 
 	count_char = 0;
+	if (!format)
+		return (-1);
 	va_start(args, format);
 	parse_arguments(format, &count_char, args);
 	va_end(args);
